@@ -1,5 +1,7 @@
 <HTML>
+<?PHP include_once "includes/header1.php"; ?>
 <head>
+
 </head>
 <body>
 <?PHP
@@ -17,9 +19,13 @@ if (isset($_GET['numcc'])){
 		$cvv=$row['cvv'];
 		$date=$row['date'];
 ?>
-<form method="POST">
+<div class="modifier-content">
+<h3>Modifier Carte credit</h3>
+<div class="container" align="center">
+	<div class="form-containers col-md-12">
+<form method="POST" action="modifCC.php">
 <table>
-<caption>Modifier CC</caption>
+
 <tr>
 <td>ID</td>
 <td><input type="number" name="id" value="<?PHP echo $id ?>" readonly></td>
@@ -45,11 +51,11 @@ if (isset($_GET['numcc'])){
         ?>
 <tr>
 <td>Date d'expiration</td>
-<td><input type="month" name="date" value="<?PHP echo $date ?>" min="<?php echo $date ?>" required></td>
+<td><input type="month" name="date" value="<?PHP echo $date ?>" min="<?PHP echo $date ?>" required></td>
 </tr>
 <tr>
 <td></td>
-<td><input type="submit" name="modifier" value="modifier"></td>
+<td><input type="submit" name="edit" value="Modifer"></td>
 </tr>
 <tr>
 <td></td>
@@ -57,16 +63,14 @@ if (isset($_GET['numcc'])){
 </tr>
 </table>
 </form>
+</div>
+</div>
+</div>
 <?PHP
 	}
 }
 
-if (isset($_POST['modifier'])){
-	$c1=new CreditCard($_POST['id'],$_POST['nom'],$_POST['prenom'],$_POST['numcc'],$_POST['cvv'],$_POST['date']);
-	$CC->modifierCC($c1,$_POST['id']);
 
-	header('Location: afficherCC.php?id='.$row["id"]);
-}
 ?>
 </body>
 </HTMl>

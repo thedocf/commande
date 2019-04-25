@@ -1,5 +1,5 @@
 <?PHP
-include "../config.php";
+include_once "../config.php";
 class CreditCardC {
 function afficherCC ($cc){
 		echo "Nom: ".$cc->getNom()."<br>";

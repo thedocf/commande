@@ -1,12 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400, 700,300);
-body {
-  background-color: #ffb242;
-  font-family: lato, 'helvetica-light';
-  position: relative;
-  text-transform: uppercase;
-  padding: 20px 0;
-}
-
 #amount {
   font-size: 12px;
 }
@@ -18,14 +10,25 @@ body {
 #card-back {
   top: 40px;
   right: 0;
-  z-index: -2;
-}
 
+}
+.content-ajout{
+  margin-top: 105px;
+
+}
+.credit-card-info{
+  border : 1px dotted black;
+
+}
+.credit-card-info hr{
+  color : black;
+  border-color : black;
+}
 #card-btn {
-  background-color: rgba(251, 251, 251, 0.8);
-  color: #ffb242;
+  
+  
   position: absolute;
-  bottom: -82px;
+  bottom: -150px;
   right: 0;
   width: 150px;
   border-radius: 8px;
@@ -38,17 +41,29 @@ body {
   outline: none;
   border: none;
   cursor: pointer;
+  
+      background: #df4782;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2em;
 }
 
-#card-btn:hover {
-  background-color: rgba(251, 251, 251, 1);
-}
+
 
 #card-cvc {
   width: 60px;
   margin-bottom: 0;
 }
 
+#card-front{
+  z-index: 1;
+  box-shadow: 2px 1px 1px 1px rgba(0, 0, 0, .2);
+}
 #card-front,
 #card-back {
   position: absolute;

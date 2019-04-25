@@ -1,10 +1,20 @@
+<?php
+include_once "includes/header1.php";
+include_once "../core/CommandeC.php";
+include_once "../core/CreditCardC.php";
+include_once "../entities/Commande.php";
+include_once "../entities/CreditCard.php";
+$cc1C=new CreditCardC();
+$listeCC=$cc1C->afficherListCC();
+?>
 <HTML>
 <head>
 	<link rel="stylesheet" href="styles/style1.css">
 	
 </head>
 <body>
-	
+<div class="container content-ajout">
+  <div class="col-md-8">
 <form method="POST" action="ajoutCC.php?id=1">
 	<div id="card-success" class="hidden">
   <i class="fa fa-check"></i>
@@ -17,7 +27,7 @@
 <div id="form-container">
    
   <div id="card-front">
-    <div id="shadow" ></div>
+    
 
     <div id="image-container">
 	   
@@ -76,12 +86,39 @@
   </div>
   <!--- end card back --->
   <!--<input type="text" id="card-token" /> -->
-  <button type="submit" value="ajouter" name="ajouter" id="card-btn">Submit</button>
+  <button class="order" type="submit" value="ajouter" name="ajouter" id="card-btn">Ajouter</button>
 
 </div>
 <!--- end form container --->
 </form>
+</div>
+<div class="col-md-4">
+  <div class="methode container credit-card-info">
+    <h3> Liste Des Cartes Credit : </h3>
+        <?PHP
+        $x=0;
+         foreach($listeCC as $row){
+      //if($_GET["id"] == $row['id']){
+          $x=1;
+      ?>
 
+        <hr>
+      Carte n°: <?PHP echo $row['numCc'] ?> <br> <span class="date_ex"> (Expire le <?PHP echo $row['date'] ?> )</span>
+      <br>
+    
+      
+      
+      
+
+      <a href="supprimerCC.php?numCc=<?PHP echo $row['numCc'] ?>"> Supprimer</a> |
+      <a href="modifierCC.php?id=<?PHP echo $row['id'].'&numcc='.$row['numCc']; ?>">
+    Modifier</a> <br>
+
+    
+       <?PHP } if ($x==0) { echo "Pas de Cartes";} ?>
+      </div>
+</div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
